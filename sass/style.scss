@@ -1,0 +1,83 @@
+
+$back-color: #cb997e;
+$text-color: #000000;
+$box-margin: 30px;
+$box-width: 500px;
+
+@import 'section';
+
+.section1{
+
+	background: $back-color;
+	color: $text-color;
+	margin: $box-margin auto;
+	padding: $box-margin / 2;
+	width: $box-width;
+}
+
+
+@mixin clearfix()
+{
+    *zoom: 1;
+    &:before,
+    &:after
+    {
+        display: table;
+        content: ' ';
+    }
+    &:after
+    {
+        clear: both;
+    }
+}
+
+.row
+{    
+    @include clearfix(); 
+    margin: 0 auto;
+    max-width: 92.308em;
+}
+
+.message {
+  border: 1px solid #ccc;
+}
+
+.success {
+  @extend .message;
+  border-color: green;
+}
+
+.error {
+  @extend .message;
+  border-color: red;
+}
+
+.warning {
+  @extend .message;
+  border-color: yellow;
+}
+
+$columnCount: 12;
+@for $i from 1 through $columnCount
+{
+    .column-#{$i}
+    {
+        float: left;
+        width: ($i/$columnCount)*100%;
+    }
+}
+
+
+$type: monster;
+p {
+  @if $type == ocean {
+    color: blue;
+  } @else if $type == matador {
+    color: red;
+  } @else if $type == monster {
+    color: green;
+  } @else {
+    color: black;
+  }
+}
+
